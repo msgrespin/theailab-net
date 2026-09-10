@@ -157,9 +157,9 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 2rem;
 }
 .hero h1 {
-  font-size: clamp(2.3rem, 5.5vw, 3.6rem);
+  font-size: clamp(2rem, 4vw, 2.75rem);
   font-weight: 700;
-  line-height: 1.05;
+  line-height: 1.08;
   margin: 0;
 }
 .hero h1::before {
@@ -391,6 +391,23 @@ h1, h2, h3, h4, h5, h6 {
   .content-wrapper { padding: 2rem 1rem 3rem 0; }
   .page-content th,
   .page-content td { padding-right: 0.6rem; }
+}
+
+/* Narrow screens: stack the key/value tables (label above its value) */
+@media (max-width: 560px) {
+  .page-content table.kv tr {
+    display: block;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .page-content table.kv th[scope="row"],
+  .page-content table.kv td {
+    display: block;
+    border: none;
+    padding: 0;
+    white-space: normal;
+  }
+  .page-content table.kv th[scope="row"] { margin-bottom: 0.2rem; }
 }
 
 /* ---------- Print ---------- */
