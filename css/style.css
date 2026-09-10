@@ -260,17 +260,17 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
 }
 
-/* Bold emphasis is dark by default; only a bold run that *leads* a
-   paragraph or list item takes the accent (dates, labels, key facts). */
+/* Bold text carries the accent — dates, labels, key terms and references. */
 .page-content strong,
 .page-content b {
-  color: var(--text);
-  font-weight: 700;
-}
-.page-content p > strong:first-child,
-.page-content li > strong:first-child {
   color: var(--accent);
   font-weight: 650;
+}
+/* ...except inside a heading or a blockquote, where it would fight the
+   surrounding colour. */
+.page-content h2 strong, .page-content h3 strong, .page-content h4 strong,
+.page-content blockquote strong {
+  color: inherit;
 }
 
 .page-content blockquote {
