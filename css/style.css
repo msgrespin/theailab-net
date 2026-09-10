@@ -104,7 +104,6 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   background: var(--bg);
   padding: 44px 0 0;
-  border-bottom: 1px solid var(--border);
 }
 .header-inner {
   margin: 0 0 0 var(--col-left);
@@ -261,7 +260,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   border-collapse: collapse;
   margin: 1.8rem 0;
-  font-size: 0.92rem;
+  font-size: 1rem;
 }
 .page-content caption { text-align: left; }
 .page-content th,
@@ -291,7 +290,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-content th[scope="row"] {
   font-family: var(--f-mono);
   font-weight: 400;
-  font-size: 0.78rem; letter-spacing: 0.03em; text-transform: uppercase;
+  font-size: 0.82rem; letter-spacing: 0.03em; text-transform: uppercase;
   color: var(--text-lt);
   padding-right: 1.5rem;
   white-space: nowrap;
