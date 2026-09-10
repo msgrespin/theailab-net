@@ -30,6 +30,11 @@
 
 *, *::before, *::after { box-sizing: border-box; }
 
+html { scroll-padding-top: 1.5rem; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 /* ---------- Accessibility helpers ---------- */
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -184,6 +189,48 @@ h1, h2, h3, h4, h5, h6 {
   list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap;
 }
 .breadcrumbs li + li::before { content: "/"; margin: 0 0.6rem; color: var(--border); }
+
+/* ---------- On-this-page section jump list ---------- */
+.page-toc {
+  margin: 0 0 2.5rem;
+  padding: 0.9rem 0 0;
+  border-top: 1px solid var(--border);
+  font-family: var(--f-mono);
+}
+.page-toc-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--text-lt);
+}
+.page-toc ol {
+  list-style: none; margin: 0; padding: 0;
+  counter-reset: toc;
+}
+.page-toc li { counter-increment: toc; margin: 0.35rem 0; }
+.page-toc a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  display: block;
+}
+.page-toc a::before {
+  content: counter(toc, decimal-leading-zero) "  ";
+  color: var(--text-lt);
+}
+.page-toc a:hover { color: var(--accent); }
+
+@media (min-width: 1240px) {
+  .page-toc {
+    position: fixed;
+    top: 7rem;
+    right: 2.25rem;
+    width: 12.5rem;
+    margin: 0;
+    max-height: calc(100vh - 10rem);
+    overflow-y: auto;
+  }
+}
 
 /* ---------- Page-content typography ---------- */
 .page-content h2 {

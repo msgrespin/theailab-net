@@ -250,6 +250,60 @@ class TestNoDuplicateBlocks:
         assert not collisions, f"Verbatim duplicated blocks: {collisions}"
 
 
+class TestPageTOC:
+    """The 'On this page' section jump list (core pages) must be internally valid."""
+
+    CORE = ["about.html", "assignments.html", "policies.html", "schedule.html", "syllabus.html"]
+
+    def _core_pages(self):
+        return [(SITE_ROOT / "core" / n) for n in self.CORE]
+
+    def test_core_pages_have_a_named_toc_nav(self):
+        missing = []
+        for p in self._core_pages():
+            soup = BeautifulSoup(p.read_text(encoding="utf-8"), "lxml")
+            toc = soup.select_one("nav.page-toc")
+            if not toc or not toc.get("aria-label"):
+                missing.append(p.name)
+        assert not missing, f"core pages without a named .page-toc nav: {missing}"
+
+    def test_every_h2_has_an_id(self):
+        failures = []
+        for p in self._core_pages():
+            soup = BeautifulSoup(p.read_text(encoding="utf-8"), "lxml")
+            for h2 in soup.select(".page-content h2"):
+                if not h2.get("id"):
+                    failures.append(f"{p.name}: <h2>{h2.get_text(strip=True)[:40]}> has no id")
+        assert not failures, f"h2 without id: {failures}"
+
+    def test_toc_links_resolve_to_headings_on_the_same_page(self):
+        failures = []
+        for p in self._core_pages():
+            soup = BeautifulSoup(p.read_text(encoding="utf-8"), "lxml")
+            ids = {el["id"] for el in soup.find_all(id=True)}
+            toc = soup.select_one("nav.page-toc")
+            links = toc.find_all("a") if toc else []
+            if not links:
+                failures.append(f"{p.name}: TOC has no links")
+                continue
+            for a in links:
+                href = a.get("href", "")
+                if not href.startswith("#") or href[1:] not in ids:
+                    failures.append(f"{p.name}: TOC link '{href}' has no matching id")
+        assert not failures, f"broken TOC anchors: {failures}"
+
+    def test_toc_covers_every_section(self):
+        failures = []
+        for p in self._core_pages():
+            soup = BeautifulSoup(p.read_text(encoding="utf-8"), "lxml")
+            h2_ids = [h2["id"] for h2 in soup.select(".page-content h2") if h2.get("id")]
+            toc = soup.select_one("nav.page-toc")
+            toc_targets = [a.get("href", "")[1:] for a in toc.find_all("a")] if toc else []
+            if h2_ids != toc_targets:
+                failures.append(f"{p.name}: TOC {toc_targets} != headings {h2_ids}")
+        assert not failures, f"TOC out of sync with headings: {failures}"
+
+
 class TestScheduleLinksAllWeeks:
     def test_schedule_links_to_all_15_weeks(self, site_root):
         """core/schedule.html must link to weeks/week-01.html through weeks/week-15.html."""
