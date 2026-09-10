@@ -333,6 +333,13 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 1.6rem;
   border-bottom: 1px solid var(--border);
 }
+/* parenthetical note inside a table cell */
+.cal-note {
+  font-family: var(--f-mono);
+  font-size: 0.78rem;
+  color: var(--text-lt);
+}
+
 /* row-header cells read as small mono labels */
 .page-content th[scope="row"] {
   font-family: var(--f-mono);
