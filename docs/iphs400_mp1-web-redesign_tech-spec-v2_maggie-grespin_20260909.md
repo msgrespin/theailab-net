@@ -30,26 +30,44 @@ confident headings, lots of vertical air, hairline rules instead of boxes — on
 **warm cream (light) background**, not the reference's near-black and not the old
 stark white.
 
-### 1. Palette (token swap in `:root`)
+### 1. Palette (token swap in `:root`) — LOCKED via preview 2026-09-09
+
+Neutral light-grey paper (not warm cream, not stark white), blue-black text, one
+muted-but-present blue accent. Chosen after iterating cream → warm orange →
+slate-blue → cream-out → cool grey → this.
 
 | Token | Old | New | Role |
 |---|---|---|---|
-| `--bg` | `#fff` | `#f5efe2` | warm cream page background |
-| `--surface` | (none) | `#faf6ec` | table/callout fill, a touch lighter than `--bg` |
-| `--text` | `#111` | `#211d17` | warm near-black body text |
-| `--text-lt` | `#6b6b6b` | `#6c6455` | warm grey — captions, eyebrows, muted |
-| `--accent` | `#0073aa` | `#b24a2e` | burnt orange — links, current-nav, rules-of-emphasis |
-| `--accent-dk` | `#005177` | `#8f3a22` | hover/active |
-| `--border` | `#e0e0e0` | `#ddd2bd` | hairline rules |
-| `--code-bg` | `#f5f5f5` | `#efe7d5` | inline code / `pre` |
+| `--bg` | `#fff` | `#edeef0` | neutral light-grey page background |
+| `--surface` | (none) | `#f6f7f8` | table/callout fill, a touch lighter than `--bg` |
+| `--text` | `#111` | `#1f2430` | blue-black body text (not pure black — eye comfort) |
+| `--text-lt` | `#6b6b6b` | `#5a606b` | muted grey — captions, eyebrows, row-labels |
+| `--accent` | `#0073aa` | `#2b5896` | blue — links, current-nav, primary button fill |
+| `--accent-dk` | `#005177` | `#1f4372` | hover/active |
+| `--border` | `#e0e0e0` | `#d6d8dc` | hairline rules |
+| `--code-bg` | `#f5f5f5` | `#e3e5e9` | inline code / `pre` |
 
 Contrast (must pass WCAG AA, verified in a test):
-- `--text` on `--bg`: ~13:1 ✅
-- `--text-lt` on `--bg`: ~4.7:1 ✅ (AA for normal text)
-- `--accent` on `--bg`: ~4.9:1 ✅ (AA for normal text and UI)
+- `--text` on `--bg`: ~14:1 ✅
+- `--text-lt` on `--bg`: ~4.9:1 ✅ (AA normal text)
+- `--accent` on `--bg`: ~6:1 ✅ (AA normal text and UI)
 
 Final hexes may be nudged ±small during implementation to hit these ratios exactly;
 the test is the source of truth.
+
+### 1b. Buttons (new — modeled on sunnypatel.net)
+
+Two variants, mono label, arrow glyph, 7px radius:
+
+- `.btn.btn-primary` — filled `--accent`, `--bg`-colored text, `→` after.
+- `.btn.btn-ghost` — transparent, hairline `--border`, `--accent` text; border
+  goes `--accent` on hover. Add `.btn-ext` to swap `→` for `↗` on links that
+  leave the site.
+- `.link-arrow` — a plain text link with a trailing `↗`, for inline "see more"
+  cases that don't need a button.
+
+Buttons go where a call-to-action earns its place (hero, end of a section), not
+on every page. Content of existing links/nav does not change.
 
 ### 2. Type — system fonts, editorial treatment
 
@@ -83,12 +101,9 @@ No font files. Three system stacks as tokens:
   solid var(--border)` on each `<tr>` only; header row `border-bottom-width: 2px`;
   cell padding `0.7rem 1rem`; left-align, `--surface` fill optional. Same markup,
   same cells.
-- **Nav gets the numbered treatment:** `01 Syllabus  02 Schedule  03 Assignments
-  04 Policies  05 About` — the number rendered in `--f-mono` `--text-lt` via a
-  `::before` on each `<li>` using `counter()`, so **the HTML link text does not
-  change** (keeps the nav-consistency test and breadcrumb logic intact). Current
-  page: accent color + thin accent underline instead of the current heavy
-  underline.
+- **Nav:** plain `Home  Syllabus  Schedule  Assignments  Policies  About` in the
+  display font, weight 600. Current page: `--accent` color + a thin `--accent`
+  bottom border. (Numbered-nav idea tried in preview and dropped — user call.)
 - Hairline rule under the header instead of the current treatment.
 - Footer: smaller, `--f-mono`, muted.
 
