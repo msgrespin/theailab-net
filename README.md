@@ -112,42 +112,17 @@ Artifacts of the AI work: `docs/iphs400_mp1-web-redesign_critique_maggie-grespin
 (critique), `docs/iphs400_mp1-web-redesign_tech-spec_maggie-grespin_20260903.md` (plan), `CHANGELOG.md`
 (result), and the per-task commit history on the `web-revision-v1` branch.
 
-### Decisions I made
+### Submission Documents
 
-- **I reused the in-class critique.** (`iphs400_mp1-web-redesign_critique_maggie-grespin_20260901.md`).
-  I was the project lead for my group so I reused the one generated during 09/01
-  class time instead of regenerating it. Then, following along with the outline
-  I stripped the Netlify/CI config first so the tech-spec wouldn't carry findings
-  about a deploy pipeline we'd removed.
-- **I reviewed and approved the tech-spec.** I reviewed everything before Claude
-  implemented the changes, including its five judgment calls: leaving a build step /
-  templating system out of scope (it contradicts the site's no-build-step design), 
-  assuming `theailab.net` as the canonical URL, the direction of each de-duplication,
-  using the longer week-title wording for more context, and never rewriting any
-  policy text because of its importance.
-- **I checked the first implementation tasks.** For each task Claude worked
-  test-first: I had Claude write a check for what "done" means, watch it fail, make the
-  change, watch the whole suite pass, and then, finally, commit. I went back through
-  the first three tasks at that level (the list of external URLs it linked, which page
-  each duplicated block moved to, and the week-title wording) and confirmed
-  every commit was scoped to one task and only one test was run, so that
-  nothing was quietly weakened or being over-edited.
-- **I reorganized the weights table.** I chose to group it into *Ongoing / Mini-Projects
-  / Final Project* rather than force one strict date-ordered list, because the two
-  assignment tracks run in parallel. It especially bothered me that the Nov. 13 dates
-  showed up after the Mini-Project 4 Nov. 20th due date.
-- **Confusion on "Mini-Project 1."** The assignment email calls this exercise
-  Mini-Project 1, but the site says Mini-Project 1 is Development Environment
-  Configuration. I left the site as-is and logged the confusion in
-  `docs/iphs400_mp1-web-redesign_open-questions_maggie-grespin_20260903.md` rather than rewrite the
-  assignment based on one ambiguous sentence. Overall, I was too unsure on this topic
-  to completely take out the original description.
-- **I made minor changes to the Home page.** I added an Office Hours row to the Course        Details table (value taken from the syllabus). I originally wanted to add an email row      but did **not** because this website is public and I did not want to put Professor Chun's   personal contact info on a repo I control.
-- **Finally I reviewed the rendered site.** I reviewed the site Claude made page by page    in Chrome before finalizing, then merged to `main` and pushed to my fork.
+For the full redesign documentation, see:
 
-### What changed
+- **`iphs400_mp1-web-redesign_report_maggie-grespin_20260910.md`** — Assignment report
+  covering design direction and resources used
+- **`PROCESS.md`** — Detailed documentation of all decisions made, methodology,
+  and the reasoning behind each choice
+- **`CHANGELOG.md`** — Complete list of technical changes
 
-See `CHANGELOG.md`. Test suite went from 25 to 51 checks; run `pytest tests/`.
+Test suite: 51 checks (up from 25 in the original). Run `pytest tests/` to verify.
 
 ## License
 
