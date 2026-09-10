@@ -11,8 +11,9 @@ HTML + one CSS file. It is served locally; there is no deployment.
 
 1. **No build step.** No SSG, templating engine, bundler, or Node toolchain.
 2. **No JavaScript** on any page.
-3. **No external runtime dependencies** — no CDN links, web fonts, analytics,
-   or third-party embeds. Everything is served from the repo.
+3. **No external runtime dependencies** — no CDN links, web fonts (`@font-face`
+   included), analytics, or third-party embeds. Everything is served from the
+   repo. Typography is a system font stack only; a test enforces this.
 4. **Page content is the instructor's.** Fix inconsistencies between pages, add
    links, restructure duplicated blocks — do not rewrite course policy, dates,
    or assignment substance.
@@ -36,6 +37,9 @@ HTML + one CSS file. It is served locally; there is no deployment.
   `<title>`, hero `<h1>`, breadcrumb.
 - No large content block is duplicated verbatim across two pages.
 - No dead CSS class selectors; no leftover template branding.
+- `css/style.css` defines the palette as `:root` custom properties
+  (`--bg`, `--text`, `--accent`, …); `--text`, `--text-lt`, and `--accent` each
+  clear WCAG AA contrast (≥ 4.5:1) against `--bg`; no `@font-face` or web-font URL.
 - The canonical origin for absolute URLs is `https://theailab.net`.
 
 ## Workflow
