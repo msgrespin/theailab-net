@@ -239,6 +239,8 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text);
   margin: 3rem 0 1rem;
 }
+.page-content > h2:first-child,
+.page-content > h3:first-child { margin-top: 0; }
 .page-content h3 {
   font-family: var(--f-display);
   font-size: 1.2rem;
@@ -258,9 +260,15 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.6;
 }
 
-/* Bold text carries the accent — used for dates, labels, key terms */
+/* Bold emphasis is dark by default; only a bold run that *leads* a
+   paragraph or list item takes the accent (dates, labels, key facts). */
 .page-content strong,
 .page-content b {
+  color: var(--text);
+  font-weight: 700;
+}
+.page-content p > strong:first-child,
+.page-content li > strong:first-child {
   color: var(--accent);
   font-weight: 650;
 }
