@@ -38,7 +38,7 @@ into office hours the following week for clarifications/questions.
 ## Notes / reconciliation with existing docs
 
 - This resolves open question #1 in
-  `open-questions-for-instructor_20260903.md`: the website re-design exercise
+  `iphs400_mp1-web-redesign_open-questions_maggie-grespin_20260903.md`: the website re-design exercise
   **is** graded as Mini-Project #1. The brief says nothing about changing the
   site's own description of MP1 (which still lists "Development Environment
   Configuration"), so that remains a separate content decision.

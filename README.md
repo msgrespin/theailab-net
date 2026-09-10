@@ -108,13 +108,13 @@ I used **Claude Code (Sonnet 5, thinking effort medium)** for this project.
 The agent did the critique, wrote the tech-spec, made every code and content
 edit, wrote the tests, and drafted the supporting docs. I directed the work
 and made the judgment calls described below. No other AI tools were used.
-Artifacts of the AI work: `docs/report_web-revision_v1_20260901.md` (critique),
-`docs/tech-spec_website-revision_v1_20260903.md` (plan), `CHANGELOG.md`
+Artifacts of the AI work: `docs/iphs400_mp1-web-redesign_critique_maggie-grespin_20260901.md`
+(critique), `docs/iphs400_mp1-web-redesign_tech-spec_maggie-grespin_20260903.md` (plan), `CHANGELOG.md`
 (result), and the per-task commit history on the `web-revision-v1` branch.
 
 ### Decisions I made
 
-- **I reused the in-class critique.** (`report_web-revision_v1_20260901.md`).
+- **I reused the in-class critique.** (`iphs400_mp1-web-redesign_critique_maggie-grespin_20260901.md`).
   I was the project lead for my group so I reused the one generated during 09/01
   class time instead of regenerating it. Then, following along with the outline
   I stripped the Netlify/CI config first so the tech-spec wouldn't carry findings
@@ -139,7 +139,7 @@ Artifacts of the AI work: `docs/report_web-revision_v1_20260901.md` (critique),
 - **Confusion on "Mini-Project 1."** The assignment email calls this exercise
   Mini-Project 1, but the site says Mini-Project 1 is Development Environment
   Configuration. I left the site as-is and logged the confusion in
-  `docs/open-questions-for-instructor_20260903.md` rather than rewrite the
+  `docs/iphs400_mp1-web-redesign_open-questions_maggie-grespin_20260903.md` rather than rewrite the
   assignment based on one ambiguous sentence. Overall, I was too unsure on this topic
   to completely take out the original description.
 - **I made minor changes to the Home page.** I added an Office Hours row to the Course        Details table (value taken from the syllabus). I originally wanted to add an email row      but did **not** because this website is public and I did not want to put Professor Chun's   personal contact info on a repo I control.

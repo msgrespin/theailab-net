@@ -3,7 +3,7 @@
 **Repository:** `theailab-net`
 **Base commit:** `dfe40a6` (after H.0: Netlify/CI stripped)
 **Date:** 2026-09-03
-**Source:** synthesized from `docs/report_web-revision_v1_20260901.md`
+**Source:** synthesized from `docs/iphs400_mp1-web-redesign_critique_maggie-grespin_20260901.md`
 **Author:** Claude (Sonnet 5), for Mini-Project #1
 
 ---
