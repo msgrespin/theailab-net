@@ -5,6 +5,19 @@ All notable changes to this site are documented here. Format loosely follows
 
 ## [Unreleased]
 
+### Changed — Mini-Project 1 redesign (v2, 2026-09)
+- New visual design for `css/style.css`: neutral light-grey paper (`#edeef0`),
+  blue-black text, a single muted blue accent (`#2b5896`). System fonts only —
+  a geometric-sans display/body stack plus a monospace stack for labels.
+- Editorial layout: large tight headings, one narrow measure, more vertical air,
+  hairline row rules instead of boxed tables, monospace breadcrumbs / table
+  row-headers / footer, and bold text rendered in the accent colour.
+- Call-to-action buttons (`.btn`) on the home hero and the assignments intro.
+- Old WordPress "Twenty Nineteen" leftovers removed; every colour, size, and
+  font is now a `:root` custom property.
+- Tests added: palette-token presence, WCAG-AA contrast computed from the hex
+  tokens, a no-web-fonts guarantee, and button-selector presence.
+
 ### Removed
 - Netlify configuration (`netlify.toml`) and the GitHub Actions deploy workflow.
   The site is now standalone-local: serve it with `python3 -m http.server`.
